@@ -13,8 +13,9 @@ import java.util.Date;
  * быть ниже в списке имён, отсортированном по возрастанию.
  * Из двух людей с одним и тем же именем больше будет тот,
  * который старше.
+ * @param <T>
  */
-public interface Person extends Comparable {
+public interface Person<T> extends Comparable<T> {
 
     /**
      * Возвращает имя человека.
@@ -30,4 +31,7 @@ public interface Person extends Comparable {
      * {@link Date}
      */
     Date getBirthDate();
+    
+    @Override
+    public int compareTo(T otherPerson);
 }

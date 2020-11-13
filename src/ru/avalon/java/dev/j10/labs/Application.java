@@ -1,6 +1,8 @@
 package ru.avalon.java.dev.j10.labs;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import sup.GenerateSomeArray;
 
 public class Application {
 
@@ -12,18 +14,22 @@ public class Application {
          * чтобы он содержал 20 строк, расположенных не
          * по порядку.
          */
-	    String[] strings = null;
+        String[] strings = null;
+        GenerateSomeArray someArray = new GenerateSomeArray();
+        //Генерируется массив случайных строк
+        strings = someArray.generateStrArray(20);
 
-	    /*
+        /*
 	     * TODO(Студент): Проинициализируйте массив persons
 	     *
 	     * 1. Создайте класс, реализующий интерфейс Person.
 	     *
 	     * 2. Проинициализируйте массив persons 20
 	     *    экземплярыми созданного класса.
-	     */
-	    Person[] persons = null;
-
+         */
+        Person[] persons = null;
+        //Генерируется массив случайных личностей           
+        persons = someArray.generateRealPersonArray(20);
         /*
          * TODO(Студент): Проинициализируйте переменную sort
          *
@@ -33,7 +39,7 @@ public class Application {
          *    созданного класса.
          */
         Sort sort = null;
-
+        sort = new Sorting();
         /*
          * TODO(Студент): Проинициализируйте переменную comparator
          *
@@ -45,7 +51,7 @@ public class Application {
          *    экземпляром созданного класса.
          */
         Comparator comparator = null;
-
+        comparator = new Comparator2();
         /*
          * TODO(Студент): Отсортируйте массив persons по возрастанию
          *
@@ -56,8 +62,17 @@ public class Application {
          * 2. С использованием отладчика убедитесь в том,
          *    что массив отсортирован по возрастанию.
          */
-        sort.sort(persons);
 
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Массив личностей до сортировки");
+        System.out.println("-----------------------------------------------------");
+        someArray.printPersonArray(persons);
+        System.out.println("=====================================================\n");
+        sort.sort(persons);
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Массив личностей после сортировки");
+        System.out.println("-----------------------------------------------------");
+        someArray.printPersonArray(persons);
         /*
          * TODO(Студент): Отсортируйте массив strings по возрастанию
          *
@@ -68,7 +83,17 @@ public class Application {
          * 2. С использованием отладчика убедитесь в том,
          *    что массив отсортирован по возрастанию.
          */
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Массив строк до сортировки");
+        System.out.println("-----------------------------------------------------");
+        someArray.printStrArray(strings);
+        System.out.println("=====================================================\n");
         sort.sort(strings);
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Массив строк после сортировки по возрастанию");
+        System.out.println("-----------------------------------------------------");
+        someArray.printStrArray(strings);
+
 
         /*
          * TODO(Студент): Отсортируйте массив strings по убыванию
@@ -80,5 +105,10 @@ public class Application {
          *    что массив отсортирован по убыванию.
          */
         sort.sort(strings, comparator);
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Массив строк после сортировки по убыванию");
+        System.out.println("-----------------------------------------------------");
+        someArray.printStrArray(strings);
+        System.out.println("=====================================================\n");
     }
 }
